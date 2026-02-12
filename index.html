@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Jornada Social</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-world">
+        <div class="top-bar">
+            <div class="stat-bubble">⭐ Pontos: <span id="stars">0</span></div>
+            <div class="stat-bubble">📍 Casa: <span id="current-step">0</span>/100</div>
+        </div>
+
+        <div id="board-viewport">
+            <div id="game-path">
+                <div id="player">🚀</div>
+            </div>
+        </div>
+
+        <div class="action-bar">
+            <div class="dice-box">
+                <div id="dice-display">?</div>
+                <button id="roll-btn" onclick="rollDice()">ROLR DADO</button>
+            </div>
+
+            <div class="deck-container">
+                <p>Clique para pegar sua carta:</p>
+                <div class="decks">
+                    <button id="draw-normal" class="card-back" onclick="drawCard(false)" disabled>
+                        <span>CARTA SOCIAL</span>
+                    </button>
+                    <button id="draw-hard" class="card-back obstacle" onclick="drawCard(true)" disabled>
+                        <span>SUPER DESAFIO</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal" class="modal hidden">
+        <div class="card-open" id="card-body">
+            <div id="card-header">CATEGORIA</div>
+            <p id="question-text">Pergunta?</p>
+            <div id="options-box"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
