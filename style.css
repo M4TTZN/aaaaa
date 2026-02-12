@@ -1,0 +1,85 @@
+:root {
+    --bg-color: #f0f9ff;
+    --primary: #00b4d8;
+    --secondary: #90e0ef;
+    --accent: #ff4d6d;
+    --gold: #ffb703;
+    --success: #2ecc71;
+}
+
+body {
+    margin: 0; font-family: 'Fredoka', sans-serif;
+    background-color: var(--bg-color); color: #023e8a; overflow: hidden;
+}
+
+.game-world { display: flex; flex-direction: column; height: 100vh; }
+
+/* Topo Estilizado */
+.top-bar {
+    padding: 20px; display: flex; justify-content: center; gap: 40px;
+    background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+.stat-bubble {
+    background: var(--secondary); padding: 10px 25px; border-radius: 50px;
+    font-weight: 600; font-size: 1.2rem; border: 3px solid var(--primary);
+}
+
+/* Tabuleiro Curvo */
+#board-viewport {
+    flex: 1; overflow: auto; padding: 150px;
+    background: radial-gradient(circle, #ffffff 10%, transparent 11%);
+    background-size: 30px 30px;
+}
+#game-path { position: relative; width: 3000px; height: 1000px; }
+
+.tile {
+    width: 80px; height: 80px; border-radius: 25px; position: absolute;
+    display: flex; align-items: center; justify-content: center;
+    background: white; border: 4px solid var(--secondary);
+    font-weight: bold; font-size: 1.1rem; transition: 0.3s;
+    box-shadow: 0 8px 0 #caf0f8;
+}
+.tile.obs { border-color: var(--gold); background: #fff9db; }
+
+#player {
+    width: 60px; height: 60px; font-size: 50px; position: absolute;
+    z-index: 100; transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Área das Cartas e Dado */
+.action-bar {
+    background: white; padding: 20px; display: flex; align-items: center;
+    justify-content: space-around; border-top: 6px solid var(--primary);
+}
+
+.card-back {
+    width: 120px; height: 160px; border-radius: 15px; border: none;
+    background: var(--primary); color: white; cursor: pointer;
+    font-family: 'Fredoka'; font-weight: 600; box-shadow: 0 8px 0 #0077b6;
+    transition: 0.2s;
+}
+.card-back.obstacle { background: var(--gold); box-shadow: 0 8px 0 #e6a400; }
+.card-back:disabled { opacity: 0.3; cursor: not-allowed; transform: translateY(8px); box-shadow: none; }
+.card-back:hover:not(:disabled) { transform: translateY(-5px); }
+
+#roll-btn {
+    padding: 15px 30px; background: var(--accent); color: white;
+    border: none; border-radius: 50px; font-family: 'Fredoka';
+    font-size: 1.2rem; font-weight: 600; cursor: pointer; box-shadow: 0 6px 0 #c9184a;
+}
+
+/* Modal */
+.modal {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; z-index: 1000;
+}
+.card-open {
+    background: white; padding: 40px; border-radius: 30px; width: 400px;
+    text-align: center; border: 10px solid var(--primary);
+}
+.hidden { display: none; }
+.opt-btn {
+    width: 100%; padding: 15px; margin: 10px 0; border: 3px solid #eee;
+    border-radius: 15px; font-family: 'Fredoka'; cursor: pointer;
+}
+.opt-btn:hover { background: #f0f9ff; border-color: var(--primary); }
